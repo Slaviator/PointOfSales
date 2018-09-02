@@ -12,13 +12,9 @@ namespace YouScan.Sales.Domain.UnitTests
         {
             // Arrange
             var sut = new PointOfSaleTerminal(pricing);
-            // todo: add batch scan operation
-            foreach (var product in products)
-            {
-                sut.Scan(product);
-            }
 
             // Act
+            sut.ScanMany(products);
             var actualTotal = sut.CalculateTotal();
 
             // Assert

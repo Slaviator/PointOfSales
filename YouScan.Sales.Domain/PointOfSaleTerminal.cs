@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace YouScan.Sales.Domain
 {
@@ -14,6 +15,14 @@ namespace YouScan.Sales.Domain
         public void Scan(Product product)
         {
             if (product == null) throw new ArgumentNullException(nameof(product));
+        }
+
+        public void ScanMany(IEnumerable<Product> products)
+        {
+            foreach (var product in products)
+            {
+                Scan(product);
+            }
         }
 
         public TotalPrice CalculateTotal()
