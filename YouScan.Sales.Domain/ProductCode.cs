@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace YouScan.Sales.Domain
 {
-    public class ProductCode
+    public class ProductCode : ValueObject
     {
         public string Code { get; }
 
@@ -11,6 +12,11 @@ namespace YouScan.Sales.Domain
             if (string.IsNullOrWhiteSpace(code))
                 throw new ArgumentException("Value cannot be null or whitespace.", nameof(code));
             Code = code;
+        }
+
+        protected override IEnumerable<object> GetEqualityComponents()
+        {
+            yield return Code;
         }
     }
 }

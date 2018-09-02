@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace YouScan.Sales.Domain
 {
-    public class Money
+    public class Money : ValueObject
     {
         public decimal Amount { get; }
 
@@ -10,6 +11,11 @@ namespace YouScan.Sales.Domain
         {
             if (amount < 0) throw new ArgumentOutOfRangeException(nameof(amount));
             Amount = amount;
+        }
+
+        protected override IEnumerable<object> GetEqualityComponents()
+        {
+            yield return Amount;
         }
     }
 }
