@@ -5,8 +5,8 @@ namespace YouScan.Sales.Domain
 {
     public class Money : ValueObject
     {
-        public static Money Zero = new Money(0m);
-        public static Money Dollar = new Money(1m);
+        public static Money Zero { get; } = new Money(0m);
+        public static Money Dollar { get; } = new Money(1m);
 
         public decimal Amount { get; }
 
