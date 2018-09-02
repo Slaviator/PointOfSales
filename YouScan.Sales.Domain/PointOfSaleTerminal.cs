@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace YouScan.Sales.Domain
 {
@@ -28,7 +29,9 @@ namespace YouScan.Sales.Domain
 
         public Money CalculateTotal()
         {
-            return new Money(0m);
+            return Pricing
+                .CalculatePrices(ScannedProducts)
+                .Aggregate(Money.Zero, (m1, m2) => m1 + m2);
         }
     }
 }

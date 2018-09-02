@@ -1,15 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using static YouScan.Sales.Domain.Money;
 
 namespace YouScan.Sales.Domain.UnitTests
 {
-    //Scan these items in this order: ABCDABA; Verify the total price is $13.25.
-    //Scan these items in this order: CCCCCCC; Verify the total price is $6.00.
-    //Scan these items in this order: ABCD; Verify the total price is $7.25
-    //A $1.25 each or 3 for $3.00
-    //B $4.25
-    //C $1.00 or $5 for a six pack
-    //D $0.75
     public class MinimalInputData : IEnumerable<object[]>
     {
         public Pricing Pricing { get; }
@@ -20,26 +14,33 @@ namespace YouScan.Sales.Domain.UnitTests
 
         public MinimalInputData()
         {
-            Pricing = new Pricing();
-            A = Product.A;
-            B = Product.B;
-            C = Product.C;
-            D = Product.D;
+            A = new Product(new ProductCode("A"));
+            B = new Product(new ProductCode("B"));
+            C = new Product(new ProductCode("C"));
+            D = new Product(new ProductCode("D"));
+
+            Pricing = new Pricing(new List<ProductPrice>
+            {
+                new ProductPrice(A.Code, new UnitPrice(1.25m * Dollar), new BatchPrice(3.0m * Dollar, 3)),
+                new ProductPrice(B.Code, new UnitPrice(4.25m * Dollar)),
+                new ProductPrice(C.Code, new UnitPrice(1.0m * Dollar), new BatchPrice(5.0m * Dollar, 6)),
+                new ProductPrice(D.Code, new UnitPrice(0.75m * Dollar)),
+            });
         }
 
         public IEnumerator<object[]> GetEnumerator()
         {
             yield return new object[]
             {
-                new List<Product> {A, B, C, D, A, B, A}, Pricing, new Money(13.25m)
+                new List<Product> {A, B, C, D, A, B, A}, Pricing, 13.25m * Dollar
             };
             yield return new object[]
             {
-                new List<Product> {C, C, C, C, C, C, C}, Pricing, new Money(6.0m)
+                new List<Product> {C, C, C, C, C, C, C}, Pricing, 6.0m * Dollar
             };
             yield return new object[]
             {
-                new List<Product> {A, B, C, D}, Pricing, new Money(7.25m)
+                new List<Product> {A, B, C, D}, Pricing, 7.25m * Dollar
             };
         }
 
