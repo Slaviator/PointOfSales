@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace YouScan.Sales.Domain
 {
@@ -34,6 +35,12 @@ namespace YouScan.Sales.Domain
         {
             if (left == null) throw new ArgumentNullException(nameof(left));
             return left.Multiply(multiplier);
+        }
+
+        public static Money Sum(IEnumerable<Money> money)
+        {
+            if (money == null) throw new ArgumentNullException(nameof(money));
+            return money.Aggregate(Zero, (m1, m2) => m1 + m2);
         }
 
         public Money Add(Money money)

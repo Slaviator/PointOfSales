@@ -29,9 +29,8 @@ namespace YouScan.Sales.Domain
 
         public Money CalculateTotal()
         {
-            return Pricing
-                .CalculatePrices(ScannedProducts)
-                .Aggregate(Money.Zero, (m1, m2) => m1 + m2);
+            var prices = Pricing.CalculatePrices(ScannedProducts);
+            return Money.Sum(prices);
         }
     }
 }
