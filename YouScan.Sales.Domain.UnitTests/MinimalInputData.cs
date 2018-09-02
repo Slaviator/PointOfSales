@@ -31,15 +31,15 @@ namespace YouScan.Sales.Domain.UnitTests
         {
             yield return new object[]
             {
-                new List<Product> {A, B, C, D, A, B, A}, Pricing, new TotalPrice(13.25m)
+                new List<Product> {A, B, C, D, A, B, A}, Pricing, new Money(13.25m)
             };
             yield return new object[]
             {
-                new List<Product> {C, C, C, C, C, C, C}, Pricing, new TotalPrice(6.0m)
+                new List<Product> {C, C, C, C, C, C, C}, Pricing, new Money(6.0m)
             };
             yield return new object[]
             {
-                new List<Product> {A, B, C, D}, Pricing, new TotalPrice(7.25m)
+                new List<Product> {A, B, C, D}, Pricing, new Money(7.25m)
             };
         }
 

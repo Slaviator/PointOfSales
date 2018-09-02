@@ -8,7 +8,7 @@ namespace YouScan.Sales.Domain.UnitTests
     {
         [Theory, ClassData(typeof(MinimalInputData))]
         public void MinimalInput_ForSetPricing_ProducesCorrectPrice(
-            IEnumerable<Product> products, Pricing pricing, TotalPrice total)
+            IEnumerable<Product> products, Pricing pricing, Money total)
         {
             // Arrange
             var sut = new PointOfSaleTerminal(pricing);

@@ -25,9 +25,9 @@ namespace YouScan.Sales.Domain
             }
         }
 
-        public TotalPrice CalculateTotal()
+        public Money CalculateTotal()
         {
-            return new TotalPrice(0m);
+            return new Money(0m);
         }
     }
 }
