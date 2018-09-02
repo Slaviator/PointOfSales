@@ -6,7 +6,6 @@ namespace YouScan.Sales.Domain
 {
     public class Money : ValueObject
     {
-        public static Money Zero { get; } = new Money(0m);
         public static Money Dollar { get; } = new Money(1m);
 
         public decimal Amount { get; }
@@ -40,7 +39,7 @@ namespace YouScan.Sales.Domain
         public static Money Sum(IEnumerable<Money> money)
         {
             if (money == null) throw new ArgumentNullException(nameof(money));
-            return money.Aggregate(Zero, (m1, m2) => m1 + m2);
+            return new Money(money.Sum(m => m.Amount));
         }
 
         public Money Add(Money money)
