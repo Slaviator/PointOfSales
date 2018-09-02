@@ -12,7 +12,8 @@ namespace YouScan.Sales.Domain
 
         public Money(decimal amount)
         {
-            if (amount < 0) throw new ArgumentOutOfRangeException(nameof(amount));
+            if (amount < 0)
+                throw new ArgumentOutOfRangeException(nameof(amount), amount, "Value can't be negative.");
             Amount = amount;
         }
 
@@ -43,7 +44,8 @@ namespace YouScan.Sales.Domain
 
         public Money Multiply(decimal multiplier)
         {
-            if (multiplier < 0) throw new ArgumentOutOfRangeException(nameof(multiplier));
+            if (multiplier < 0)
+                throw new ArgumentOutOfRangeException(nameof(multiplier), multiplier, "Value can't be negative.");
             return new Money(Amount * multiplier);
         }
 

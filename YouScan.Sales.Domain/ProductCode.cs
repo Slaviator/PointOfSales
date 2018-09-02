@@ -10,7 +10,7 @@ namespace YouScan.Sales.Domain
         public ProductCode(string code)
         {
             if (string.IsNullOrWhiteSpace(code))
-                throw new ArgumentException("Value cannot be null or whitespace.", nameof(code));
+                throw new ArgumentException("Value can't be null or whitespace.", nameof(code));
             Code = code;
         }
 

@@ -14,7 +14,8 @@ namespace YouScan.Sales.Domain
             var productPricesDistinctCount = ProductPrices.Select(pp => pp.ProductCode).Distinct().Count();
             var productPricesCount = ProductPrices.Count();
             if (productPricesCount != productPricesDistinctCount)
-                throw new ArgumentOutOfRangeException(nameof(productPrices));
+                throw new ArgumentOutOfRangeException(nameof(productPrices), productPrices,
+                    "Values must be distinct.");
         }
 
         public IEnumerable<Money> CalculatePrices(IEnumerable<Product> products)

@@ -10,7 +10,9 @@ namespace YouScan.Sales.Domain
 
         public BatchPrice(Money price, int batchSize)
         {
-            if (batchSize <= 0) throw new ArgumentOutOfRangeException(nameof(batchSize));
+            if (batchSize <= 0)
+                throw new ArgumentOutOfRangeException(nameof(batchSize), batchSize,
+                    "Value must be positive.");
             Price = price ?? throw new ArgumentNullException(nameof(price));
             BatchSize = batchSize;
         }
