@@ -21,10 +21,10 @@ namespace YouScan.Sales.Domain.UnitTests
         public MinimalInputData()
         {
             Pricing = new Pricing();
-            A = new Product(new ProductCode("A"));
-            B = new Product(new ProductCode("B"));
-            C = new Product(new ProductCode("C"));
-            D = new Product(new ProductCode("D"));
+            A = Product.A;
+            B = Product.B;
+            C = Product.C;
+            D = Product.D;
         }
 
         public IEnumerator<object[]> GetEnumerator()
