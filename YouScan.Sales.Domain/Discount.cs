@@ -17,6 +17,12 @@ namespace YouScan.Sales.Domain
             DiscountPercent = discountPercent;
         }
 
+        public Money ApplyOn(Money money)
+        {
+            if (money == null) throw new ArgumentNullException(nameof(money));
+            return money - money / 100 * DiscountPercent;
+        }
+
         protected override IEnumerable<object> GetEqualityComponents()
         {
             yield return DiscountPercent;

@@ -20,11 +20,17 @@ namespace YouScan.Sales.Domain
             if (discount == null) throw new ArgumentNullException(nameof(discount));
 
             if (discount.SpentThreshold <= Discounts.Last().SpentThreshold)
-                throw new ArgumentException("Value must be higher than last.", nameof(discount.SpentThreshold));
+                throw new ArgumentException("Value must be higher than previous.", nameof(discount.SpentThreshold));
             if (discount.DiscountPercent <= Discounts.Last().DiscountPercent)
-                throw new ArgumentException("Value must be higher than last.", nameof(discount.DiscountPercent));
+                throw new ArgumentException("Value must be higher than previous.", nameof(discount.DiscountPercent));
 
             return new DiscountProgram(new List<Discount>(Discounts) {discount});
+        }
+
+        public Discount GetBestDiscount(DiscountCard discountCard)
+        {
+            if (discountCard == null) throw new ArgumentNullException(nameof(discountCard));
+            return Discounts.Last(discount => discountCard.MoneySpent >= discount.SpentThreshold);
         }
 
         protected override IEnumerable<object> GetEqualityComponents()

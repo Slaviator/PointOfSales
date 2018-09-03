@@ -25,16 +25,29 @@ namespace YouScan.Sales.Domain
             return left.Add(right);
         }
 
-        public static Money operator *(Money left, decimal multiplier)
+        public static Money operator -(Money left, Money right)
         {
             if (left == null) throw new ArgumentNullException(nameof(left));
-            return left.Multiply(multiplier);
+            if (right == null) throw new ArgumentNullException(nameof(right));
+            return left.Subtract(right);
         }
 
-        public static Money operator *(decimal multiplier, Money left)
+        public static Money operator /(Money money, decimal divider)
         {
-            if (left == null) throw new ArgumentNullException(nameof(left));
-            return left.Multiply(multiplier);
+            if (money == null) throw new ArgumentNullException(nameof(money));
+            return money.Divide(divider);
+        }
+
+        public static Money operator *(Money money, decimal multiplier)
+        {
+            if (money == null) throw new ArgumentNullException(nameof(money));
+            return money.Multiply(multiplier);
+        }
+
+        public static Money operator *(decimal multiplier, Money money)
+        {
+            if (money == null) throw new ArgumentNullException(nameof(money));
+            return money.Multiply(multiplier);
         }
 
         public static bool operator <(Money left, Money right)
@@ -69,11 +82,24 @@ namespace YouScan.Sales.Domain
             return new Money(Amount + money.Amount);
         }
 
+        public Money Subtract(Money money)
+        {
+            if (money == null) throw new ArgumentNullException(nameof(money));
+            return new Money(Amount - money.Amount);
+        }
+
         public Money Multiply(decimal multiplier)
         {
             if (multiplier < 0)
                 throw new ArgumentOutOfRangeException(nameof(multiplier), multiplier, "Value can't be negative.");
             return new Money(Amount * multiplier);
+        }
+
+        private Money Divide(decimal divider)
+        {
+            if (divider <= 0)
+                throw new ArgumentOutOfRangeException(nameof(divider), divider, "Value must be positive.");
+            return new Money(Amount / divider);
         }
 
         public int CompareTo(Money other)
