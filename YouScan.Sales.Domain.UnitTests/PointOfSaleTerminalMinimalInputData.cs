@@ -4,7 +4,7 @@ using static YouScan.Sales.Domain.Money;
 
 namespace YouScan.Sales.Domain.UnitTests
 {
-    public class MinimalInputData : IEnumerable<object[]>
+    public class PointOfSaleTerminalMinimalInputData : IEnumerable<object[]>
     {
         public Pricing Pricing { get; }
         public Product A { get; }
@@ -12,7 +12,7 @@ namespace YouScan.Sales.Domain.UnitTests
         public Product C { get; }
         public Product D { get; }
 
-        public MinimalInputData()
+        public PointOfSaleTerminalMinimalInputData()
         {
             A = new Product(new ProductCode("A"));
             B = new Product(new ProductCode("B"));

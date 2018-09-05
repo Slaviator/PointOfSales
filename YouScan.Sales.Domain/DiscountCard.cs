@@ -5,8 +5,6 @@ namespace YouScan.Sales.Domain
 {
     public class DiscountCard : ValueObject
     {
-        public static DiscountCard New { get; } = new DiscountCard(Money.Zero);
-
         public Money MoneySpent { get; }
 
         public DiscountCard(Money moneySpent)

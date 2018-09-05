@@ -6,7 +6,7 @@ namespace YouScan.Sales.Domain.UnitTests
 {
     public class PointOfSaleTerminalTests
     {
-        [Theory, ClassData(typeof(MinimalInputData))]
+        [Theory, ClassData(typeof(PointOfSaleTerminalMinimalInputData))]
         public void MinimalInput_ForSetPricing_ProducesCorrectPrice(
             IEnumerable<Product> products, Pricing pricing, Money total)
         {
