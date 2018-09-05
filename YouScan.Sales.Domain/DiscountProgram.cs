@@ -15,16 +15,18 @@ namespace YouScan.Sales.Domain
             Discounts = discounts;
         }
 
-        public DiscountProgram AddDiscount(Discount discount)
+        public DiscountProgram AddDiscount(Money spentThreshold, int discountPercent)
         {
-            if (discount == null) throw new ArgumentNullException(nameof(discount));
+            if (spentThreshold == null) throw new ArgumentNullException(nameof(spentThreshold));
 
-            if (discount.SpentThreshold <= Discounts.Last().SpentThreshold)
-                throw new ArgumentException("Value must be higher than previous.", nameof(discount.SpentThreshold));
-            if (discount.DiscountPercent <= Discounts.Last().DiscountPercent)
-                throw new ArgumentException("Value must be higher than previous.", nameof(discount.DiscountPercent));
+            if (spentThreshold <= Discounts.Last().SpentThreshold)
+                throw new ArgumentOutOfRangeException(nameof(spentThreshold), spentThreshold,
+                    "Value must be higher than previous.");
+            if (discountPercent <= Discounts.Last().DiscountPercent)
+                throw new ArgumentOutOfRangeException(nameof(discountPercent), discountPercent,
+                    "Value must be higher than previous.");
 
-            return new DiscountProgram(new List<Discount>(Discounts) {discount});
+            return new DiscountProgram(new List<Discount>(Discounts) {new Discount(spentThreshold, discountPercent)});
         }
 
         public Discount GetBestDiscount(DiscountCard discountCard)

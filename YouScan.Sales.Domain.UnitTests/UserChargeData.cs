@@ -12,10 +12,10 @@ namespace YouScan.Sales.Domain.UnitTests
         public UserChargeData()
         {
             DiscountProgram = DiscountProgram.Empty
-                .AddDiscount(new Discount(1000 * Dollar, 1))
-                .AddDiscount(new Discount(2000 * Dollar, 3))
-                .AddDiscount(new Discount(5000 * Dollar, 5))
-                .AddDiscount(new Discount(10000 * Dollar, 7));
+                .AddDiscount(1000 * Dollar, 1)
+                .AddDiscount(2000 * Dollar, 3)
+                .AddDiscount(5000 * Dollar, 5)
+                .AddDiscount(10000 * Dollar, 7);
 
             OneThousandDollarsPrice = 1000 * Dollar;
         }
