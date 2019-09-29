@@ -37,3 +37,5 @@ These test cases must be shown to work in your program:
     Scan these items in this order: ABCDABA; Verify the total price is $13.25.
     Scan these items in this order: CCCCCCC; Verify the total price is $6.00.
     Scan these items in this order: ABCD; Verify the total price is $7.25
+
+Discount program is additional task
