@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace YouScan.Sales.Domain
+namespace PointOfSales.Domain
 {
     public class DiscountCard : ValueObject
     {

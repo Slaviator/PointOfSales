@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using static YouScan.Sales.Domain.Money;
+using static PointOfSales.Domain.Money;
 
-namespace YouScan.Sales.Domain.UnitTests
+namespace PointOfSales.Domain.UnitTests
 {
     public class UserChargeData : IEnumerable<object[]>
     {

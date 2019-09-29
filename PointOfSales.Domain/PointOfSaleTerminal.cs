@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
-namespace YouScan.Sales.Domain
+namespace PointOfSales.Domain
 {
     public class PointOfSaleTerminal
     {

@@ -1,7 +1,7 @@
 ﻿using FluentAssertions;
 using Xunit;
 
-namespace YouScan.Sales.Domain.UnitTests
+namespace PointOfSales.Domain.UnitTests
 {
     public class UserChargeTests
     {

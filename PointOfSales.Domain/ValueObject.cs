@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace YouScan.Sales.Domain
+namespace PointOfSales.Domain
 {
     public abstract class ValueObject : IEquatable<ValueObject>
     {

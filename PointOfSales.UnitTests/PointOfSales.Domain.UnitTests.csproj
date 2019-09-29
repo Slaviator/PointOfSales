@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\YouScan.Sales.Domain\YouScan.Sales.Domain.csproj" />
+    <ProjectReference Include="..\PointOfSales.Domain\PointOfSales.Domain.csproj" />
   </ItemGroup>
 
 </Project>

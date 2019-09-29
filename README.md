@@ -1,6 +1,4 @@
-# YouScan.Sales
-
-Proof of knowledge
+# PointOfSales
 
 Implement a solution to the following problem. We are looking for clean, well-factored, object oriented code.
 You do not need to provide any form of persistence in this program. 

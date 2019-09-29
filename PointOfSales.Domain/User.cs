@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace YouScan.Sales.Domain
+namespace PointOfSales.Domain
 {
     public class User
     {
